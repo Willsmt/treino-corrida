@@ -74,11 +74,11 @@ async function openRemote(fakeFetch) {
   return { dom, calls, banner: dom.window.document.getElementById("banner") };
 }
 
-test("renderiza a pista (2 raias x 12 semanas) e 3 sessões na semana atual", async () => {
+test("renderiza a pista (1 raia x 12 semanas) e 3 sessões na semana atual", async () => {
   const { window } = await openPage();
   const { document } = window;
-  assert.equal(document.querySelectorAll(".cell").length, 24);
-  assert.equal(document.querySelectorAll(".cell .bar").length, 72);
+  assert.equal(document.querySelectorAll(".cell").length, 12);
+  assert.equal(document.querySelectorAll(".cell .bar").length, 36);
   assert.equal(document.querySelectorAll(".session").length, 3);
   assert.match(document.getElementById("week").textContent, /Semana 1/);
   assert.match(document.getElementById("status-line").textContent, /Começa na/);
@@ -87,22 +87,6 @@ test("renderiza a pista (2 raias x 12 semanas) e 3 sessões na semana atual", as
     false,
     "modo local deve avisar",
   );
-  window.close();
-});
-
-test("trocar de atleta mostra a trilha dele (B/C diferentes, A igual)", async () => {
-  const { window } = await openPage();
-  const { document } = window;
-  const mainsOf = () =>
-    [...document.querySelectorAll(".session__main")].map((n) => n.textContent);
-  const willians = mainsOf();
-  [...document.querySelectorAll(".who button")]
-    .find((b) => b.textContent === "Suellen")
-    .click();
-  const suellen = mainsOf();
-  assert.equal(document.body.dataset.me, "suellen");
-  assert.equal(willians[0], suellen[0]);
-  assert.notEqual(willians[1], suellen[1]);
   window.close();
 });
 
@@ -213,7 +197,7 @@ test("remoto: resposta que não é JSON (login do Google) é identificada", asyn
 test("remoto: sucesso envia POST simples (sem cabeçalhos) e aplica os registros", async () => {
   const records = [
     {
-      athlete_id: "suellen",
+      athlete_id: "willians",
       session_id: "01-A-J",
       done: true,
       duration_min: 25,
@@ -243,7 +227,7 @@ test("remoto: sucesso envia POST simples (sem cabeçalhos) e aplica os registros
   });
   assert.equal(
     dom.window.document.querySelectorAll(
-      '.cell[data-athlete="suellen"] .bar.is-done',
+      '.cell[data-athlete="willians"] .bar.is-done',
     ).length,
     1,
   );

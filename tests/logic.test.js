@@ -49,23 +49,23 @@ test('validateEntry rejeita valores fora do intervalo e texto longo', () => {
 });
 
 test('mergeRecords mantém o registro mais recente por atleta+sessão', () => {
-  const a = { athlete_id: 'suellen', session_id: '01-A-J', done: false, updated_at: '2026-10-12T10:00:00Z' };
-  const b = { athlete_id: 'suellen', session_id: '01-A-J', done: true, updated_at: '2026-10-12T11:00:00Z' };
-  const c = { athlete_id: 'willians', session_id: '01-A-J', done: true, updated_at: '2026-10-12T09:00:00Z' };
+  const a = { athlete_id: 'willians', session_id: '01-A-J', done: false, updated_at: '2026-10-12T10:00:00Z' };
+  const b = { athlete_id: 'willians', session_id: '01-A-J', done: true, updated_at: '2026-10-12T11:00:00Z' };
+  const c = { athlete_id: 'willians', session_id: '01-B-R', done: true, updated_at: '2026-10-12T09:00:00Z' };
   const merged = LOGIC.mergeRecords([b, c], [a]);
   assert.equal(merged.length, 2);
-  assert.equal(merged.find((r) => r.athlete_id === 'suellen').done, true);
+  assert.equal(merged.find((r) => r.session_id === '01-A-J').done, true);
 });
 
 test('summarize conta sessões feitas por semana', () => {
-  const sessions = PLAN.sessionsFor('suellen');
+  const sessions = PLAN.sessionsFor('willians');
   const map = new Map();
-  for (const id of ['01-A-J', '01-B-I', '02-A-J']) {
-    map.set(LOGIC.recordKey('suellen', id), { done: true });
+  for (const id of ['01-A-J', '01-B-R', '02-A-J']) {
+    map.set(LOGIC.recordKey('willians', id), { done: true });
   }
-  map.set(LOGIC.recordKey('suellen', '02-B-I'), { done: false });
-  map.set(LOGIC.recordKey('willians', '03-A-J'), { done: true }); // outro atleta não conta
-  const s = LOGIC.summarize(map, sessions, 'suellen');
+  map.set(LOGIC.recordKey('willians', '02-B-R'), { done: false });
+  map.set(LOGIC.recordKey('outro', '03-A-J'), { done: true }); // outro atleta não conta
+  const s = LOGIC.summarize(map, sessions, 'willians');
   assert.equal(s.done, 3);
   assert.equal(s.total, 36);
   assert.deepEqual(s.byWeek[0], { week: 1, done: 2, total: 3 });

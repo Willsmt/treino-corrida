@@ -1,61 +1,37 @@
-sessao_id,semana,mesociclo,tipo_semana,slot,dia_sugerido,trilha,juntos,tipo,treino_principal,aquecimento_min,principal_min,desaquecimento_min,total_min,rpe_alvo
-01-A-J,1,1 - Adaptação,carga,A,Segunda-feira,Juntos,sim,Corrida/caminhada,5× (3 min correndo + 2 min caminhando),5,25,5,35,3–5
-01-B-I,1,1 - Adaptação,carga,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,4× (3 min correndo + 2 min caminhando),5,20,5,30,3–4
-01-C-I,1,1 - Adaptação,carga,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,4× (3 min correndo + 2 min caminhando),5,20,5,30,3–5
-01-B-R,1,1 - Adaptação,carga,B,Quarta ou quinta,Retorno,nao,Corrida/caminhada,5× (4 min correndo + 1 min caminhando),5,25,5,35,3–4
-01-C-R,1,1 - Adaptação,carga,C,Sexta a domingo,Retorno,nao,Corrida/caminhada,4× (5 min correndo + 1 min caminhando),5,24,5,34,3–5
-02-A-J,2,1 - Adaptação,carga,A,Segunda-feira,Juntos,sim,Corrida/caminhada,4× (4 min correndo + 2 min caminhando),5,24,5,34,3–5
-02-B-I,2,1 - Adaptação,carga,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,4× (3 min correndo + 2 min caminhando),5,20,5,30,3–4
-02-C-I,2,1 - Adaptação,carga,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,4× (4 min correndo + 2 min caminhando),5,24,5,34,3–5
-02-B-R,2,1 - Adaptação,carga,B,Quarta ou quinta,Retorno,nao,Corrida/caminhada,4× (5 min correndo + 1 min caminhando),5,24,5,34,3–4
-02-C-R,2,1 - Adaptação,carga,C,Sexta a domingo,Retorno,nao,Corrida/caminhada,4× (6 min correndo + 1 min caminhando),5,28,5,38,3–5
-03-A-J,3,1 - Adaptação,carga,A,Segunda-feira,Juntos,sim,Corrida/caminhada,4× (5 min correndo + 2 min caminhando),5,28,5,38,3–5
-03-B-I,3,1 - Adaptação,carga,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,4× (3 min correndo + 2 min caminhando),5,20,5,30,3–4
-03-C-I,3,1 - Adaptação,carga,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,3× (5 min correndo + 2 min caminhando),5,21,5,31,3–5
-03-B-R,3,1 - Adaptação,carga,B,Quarta ou quinta,Retorno,nao,Corrida/caminhada,4× (6 min correndo + 1 min caminhando),5,28,5,38,3–4
-03-C-R,3,1 - Adaptação,carga,C,Sexta a domingo,Retorno,nao,Corrida/caminhada,3× (8 min correndo + 1 min caminhando),5,27,5,37,3–5
-04-A-J,4,1 - Adaptação,descarga,A,Segunda-feira,Juntos,sim,Corrida/caminhada,3× (4 min correndo + 2 min caminhando),5,18,5,28,3–5
-04-B-I,4,1 - Adaptação,descarga,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,3× (3 min correndo + 2 min caminhando),5,15,5,25,3–4
-04-C-I,4,1 - Adaptação,descarga,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,3× (4 min correndo + 2 min caminhando),5,18,5,28,3–5
-04-B-R,4,1 - Adaptação,descarga,B,Quarta ou quinta,Retorno,nao,Corrida/caminhada,4× (5 min correndo + 1 min caminhando),5,24,5,34,3–4
-04-C-R,4,1 - Adaptação,descarga,C,Sexta a domingo,Retorno,nao,Corrida/caminhada,3× (6 min correndo + 1 min caminhando),5,21,5,31,3–5
-05-A-J,5,2 - Base,carga,A,Segunda-feira,Juntos,sim,Corrida/caminhada,4× (6 min correndo + 2 min caminhando),5,32,5,42,3–5
-05-B-I,5,2 - Base,carga,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,3× (4 min correndo + 2 min caminhando),5,18,5,28,3–4
-05-C-I,5,2 - Base,carga,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,3× (5 min correndo + 2 min caminhando),5,21,5,31,3–5
-05-B-R,5,2 - Base,carga,B,Quarta ou quinta,Retorno,nao,Corrida/caminhada,4× (6 min correndo + 1 min caminhando),5,28,5,38,3–4
-05-C-R,5,2 - Base,carga,C,Sexta a domingo,Retorno,nao,Corrida/caminhada,3× (8 min correndo + 1 min caminhando),5,27,5,37,3–5
-06-A-J,6,2 - Base,carga,A,Segunda-feira,Juntos,sim,Corrida/caminhada,3× (8 min correndo + 2 min caminhando),5,30,5,40,3–5
-06-B-I,6,2 - Base,carga,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,3× (5 min correndo + 2 min caminhando),5,21,5,31,3–4
-06-C-I,6,2 - Base,carga,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,3× (6 min correndo + 2 min caminhando),5,24,5,34,3–5
-06-B-R,6,2 - Base,carga,B,Quarta ou quinta,Retorno,nao,Corrida/caminhada,3× (8 min correndo + 1 min caminhando),5,27,5,37,3–4
-06-C-R,6,2 - Base,carga,C,Sexta a domingo,Retorno,nao,Corrida/caminhada,3× (10 min correndo + 1 min caminhando),5,33,5,43,3–5
-07-A-J,7,2 - Base,carga,A,Segunda-feira,Juntos,sim,Corrida/caminhada,3× (10 min correndo + 2 min caminhando),5,36,5,46,3–5
-07-B-I,7,2 - Base,carga,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,3× (5 min correndo + 2 min caminhando),5,21,5,31,3–4
-07-C-I,7,2 - Base,carga,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,3× (6 min correndo + 2 min caminhando),5,24,5,34,3–5
-07-B-R,7,2 - Base,carga,B,Quarta ou quinta,Retorno,nao,Corrida/caminhada,2× (10 min correndo + 1 min caminhando),5,22,5,32,3–4
-07-C-R,7,2 - Base,carga,C,Sexta a domingo,Retorno,nao,Corrida/caminhada,3× (12 min correndo + 1 min caminhando),5,39,5,49,3–5
-08-A-J,8,2 - Base,descarga,A,Segunda-feira,Juntos,sim,Corrida/caminhada,3× (8 min correndo + 2 min caminhando),5,30,5,40,3–5
-08-B-I,8,2 - Base,descarga,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,2× (5 min correndo + 2 min caminhando),5,14,5,24,3–4
-08-C-I,8,2 - Base,descarga,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,2× (6 min correndo + 2 min caminhando),5,16,5,26,3–5
-08-B-R,8,2 - Base,descarga,B,Quarta ou quinta,Retorno,nao,Corrida/caminhada,2× (8 min correndo + 1 min caminhando),5,18,5,28,3–4
-08-C-R,8,2 - Base,descarga,C,Sexta a domingo,Retorno,nao,Corrida/caminhada,2× (10 min correndo + 1 min caminhando),5,22,5,32,3–5
-09-A-J,9,3 - Contínuo,carga,A,Segunda-feira,Juntos,sim,Corrida/caminhada,3× (10 min correndo + 2 min caminhando),5,36,5,46,3–5
-09-B-I,9,3 - Contínuo,carga,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,3× (6 min correndo + 2 min caminhando),5,24,5,34,3–4
-09-C-I,9,3 - Contínuo,carga,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,3× (7 min correndo + 2 min caminhando),5,27,5,37,3–5
-09-B-R,9,3 - Contínuo,carga,B,Quarta ou quinta,Retorno,nao,Corrida/caminhada,2× (15 min correndo + 1 min caminhando),5,32,5,42,3–4
-09-C-R,9,3 - Contínuo,carga,C,Sexta a domingo,Retorno,nao,Fartlek leve,"8 min de trote leve, depois 6× (1 min mais forte, RPE 6–7 + 2 min de trote leve)",5,26,5,36,3–5
-10-A-J,10,3 - Contínuo,carga,A,Segunda-feira,Juntos,sim,Corrida/caminhada,3× (12 min correndo + 2 min caminhando),5,42,5,52,3–5
-10-B-I,10,3 - Contínuo,carga,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,2× (8 min correndo + 2 min caminhando),5,20,5,30,3–4
-10-C-I,10,3 - Contínuo,carga,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,2× (10 min correndo + 2 min caminhando),5,24,5,34,3–5
-10-B-R,10,3 - Contínuo,carga,B,Quarta ou quinta,Retorno,nao,Corrida contínua,25 min de corrida contínua,5,25,5,35,3–4
-10-C-R,10,3 - Contínuo,carga,C,Sexta a domingo,Retorno,nao,Fartlek leve,"8 min de trote leve, depois 8× (1 min mais forte, RPE 6–7 + 2 min de trote leve)",5,32,5,42,3–5
-11-A-J,11,3 - Contínuo,polimento,A,Segunda-feira,Juntos,sim,Corrida/caminhada,2× (10 min correndo + 2 min caminhando),5,24,5,34,3–5
-11-B-I,11,3 - Contínuo,polimento,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,2× (8 min correndo + 2 min caminhando),5,20,5,30,3–4
-11-C-I,11,3 - Contínuo,polimento,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,2× (6 min correndo + 2 min caminhando),5,16,5,26,3–5
-11-B-R,11,3 - Contínuo,polimento,B,Quarta ou quinta,Retorno,nao,Corrida contínua,20 min de corrida contínua,5,20,5,30,3–4
-11-C-R,11,3 - Contínuo,polimento,C,Sexta a domingo,Retorno,nao,Corrida/caminhada,2× (10 min correndo + 1 min caminhando),5,22,5,32,3–5
-12-A-J,12,3 - Contínuo,teste,A,Segunda-feira,Juntos,sim,Teste 5K,5 km juntos no ritmo da Suellen. Corram enquanto der para conversar; caminhem 1 min sempre que precisar e retomem.,5,40,5,50,4–6
-12-B-I,12,3 - Contínuo,teste,B,Quarta ou quinta,Iniciante,nao,Corrida/caminhada,3× (5 min correndo + 2 min caminhando),5,21,5,31,3–4
-12-C-I,12,3 - Contínuo,teste,C,Sexta a domingo,Iniciante,nao,Corrida/caminhada,2× (5 min correndo + 2 min caminhando),5,14,5,24,3–5
-12-B-R,12,3 - Contínuo,teste,B,Quarta ou quinta,Retorno,nao,Corrida/caminhada,2× (8 min correndo + 1 min caminhando),5,18,5,28,3–4
-12-C-R,12,3 - Contínuo,teste,C,Sexta a domingo,Retorno,nao,Corrida/caminhada,2× (10 min correndo + 1 min caminhando),5,22,5,32,3–5
+sessao_id,semana,mesociclo,tipo_semana,slot,dia_sugerido,tipo,treino_principal,aquecimento_min,principal_min,desaquecimento_min,total_min,rpe_alvo
+01-A-J,1,1 - Adaptação,carga,A,Segunda-feira,Corrida/caminhada,5× (4 min correndo + 1 min caminhando),5,25,5,35,3–5
+01-B-R,1,1 - Adaptação,carga,B,Quarta ou quinta,Corrida/caminhada,5× (4 min correndo + 1 min caminhando),5,25,5,35,3–4
+01-C-R,1,1 - Adaptação,carga,C,Sexta a domingo,Corrida/caminhada,4× (5 min correndo + 1 min caminhando),5,24,5,34,3–5
+02-A-J,2,1 - Adaptação,carga,A,Segunda-feira,Corrida/caminhada,4× (5 min correndo + 1 min caminhando),5,24,5,34,3–5
+02-B-R,2,1 - Adaptação,carga,B,Quarta ou quinta,Corrida/caminhada,4× (5 min correndo + 1 min caminhando),5,24,5,34,3–4
+02-C-R,2,1 - Adaptação,carga,C,Sexta a domingo,Corrida/caminhada,4× (6 min correndo + 1 min caminhando),5,28,5,38,3–5
+03-A-J,3,1 - Adaptação,carga,A,Segunda-feira,Corrida/caminhada,4× (6 min correndo + 1 min caminhando),5,28,5,38,3–5
+03-B-R,3,1 - Adaptação,carga,B,Quarta ou quinta,Corrida/caminhada,4× (6 min correndo + 1 min caminhando),5,28,5,38,3–4
+03-C-R,3,1 - Adaptação,carga,C,Sexta a domingo,Corrida/caminhada,3× (8 min correndo + 1 min caminhando),5,27,5,37,3–5
+04-A-J,4,1 - Adaptação,descarga,A,Segunda-feira,Corrida/caminhada,3× (4 min correndo + 1 min caminhando),5,15,5,25,3–5
+04-B-R,4,1 - Adaptação,descarga,B,Quarta ou quinta,Corrida/caminhada,4× (5 min correndo + 1 min caminhando),5,24,5,34,3–4
+04-C-R,4,1 - Adaptação,descarga,C,Sexta a domingo,Corrida/caminhada,3× (6 min correndo + 1 min caminhando),5,21,5,31,3–5
+05-A-J,5,2 - Base,carga,A,Segunda-feira,Corrida/caminhada,4× (6 min correndo + 1 min caminhando),5,28,5,38,3–5
+05-B-R,5,2 - Base,carga,B,Quarta ou quinta,Corrida/caminhada,4× (6 min correndo + 1 min caminhando),5,28,5,38,3–4
+05-C-R,5,2 - Base,carga,C,Sexta a domingo,Corrida/caminhada,3× (8 min correndo + 1 min caminhando),5,27,5,37,3–5
+06-A-J,6,2 - Base,carga,A,Segunda-feira,Corrida/caminhada,3× (8 min correndo + 1 min caminhando),5,27,5,37,3–5
+06-B-R,6,2 - Base,carga,B,Quarta ou quinta,Corrida/caminhada,3× (8 min correndo + 1 min caminhando),5,27,5,37,3–4
+06-C-R,6,2 - Base,carga,C,Sexta a domingo,Corrida/caminhada,3× (10 min correndo + 1 min caminhando),5,33,5,43,3–5
+07-A-J,7,2 - Base,carga,A,Segunda-feira,Corrida/caminhada,3× (8 min correndo + 1 min caminhando),5,27,5,37,3–5
+07-B-R,7,2 - Base,carga,B,Quarta ou quinta,Corrida/caminhada,2× (10 min correndo + 1 min caminhando),5,22,5,32,3–4
+07-C-R,7,2 - Base,carga,C,Sexta a domingo,Corrida/caminhada,3× (12 min correndo + 1 min caminhando),5,39,5,49,3–5
+08-A-J,8,2 - Base,descarga,A,Segunda-feira,Corrida/caminhada,3× (6 min correndo + 1 min caminhando),5,21,5,31,3–5
+08-B-R,8,2 - Base,descarga,B,Quarta ou quinta,Corrida/caminhada,2× (8 min correndo + 1 min caminhando),5,18,5,28,3–4
+08-C-R,8,2 - Base,descarga,C,Sexta a domingo,Corrida/caminhada,2× (10 min correndo + 1 min caminhando),5,22,5,32,3–5
+09-A-J,9,3 - Contínuo,carga,A,Segunda-feira,Corrida/caminhada,2× (10 min correndo + 1 min caminhando),5,22,5,32,3–5
+09-B-R,9,3 - Contínuo,carga,B,Quarta ou quinta,Corrida/caminhada,2× (15 min correndo + 1 min caminhando),5,32,5,42,3–4
+09-C-R,9,3 - Contínuo,carga,C,Sexta a domingo,Fartlek leve,"8 min de trote leve, depois 6× (1 min mais forte, RPE 6–7 + 2 min de trote leve)",5,26,5,36,3–5
+10-A-J,10,3 - Contínuo,carga,A,Segunda-feira,Corrida/caminhada,2× (10 min correndo + 1 min caminhando),5,22,5,32,3–5
+10-B-R,10,3 - Contínuo,carga,B,Quarta ou quinta,Corrida contínua,25 min de corrida contínua,5,25,5,35,3–4
+10-C-R,10,3 - Contínuo,carga,C,Sexta a domingo,Fartlek leve,"8 min de trote leve, depois 8× (1 min mais forte, RPE 6–7 + 2 min de trote leve)",5,32,5,42,3–5
+11-A-J,11,3 - Contínuo,polimento,A,Segunda-feira,Corrida/caminhada,2× (8 min correndo + 1 min caminhando),5,18,5,28,3–5
+11-B-R,11,3 - Contínuo,polimento,B,Quarta ou quinta,Corrida contínua,20 min de corrida contínua,5,20,5,30,3–4
+11-C-R,11,3 - Contínuo,polimento,C,Sexta a domingo,Corrida/caminhada,2× (10 min correndo + 1 min caminhando),5,22,5,32,3–5
+12-A-J,12,3 - Contínuo,teste,A,Segunda-feira,Teste 5K,5 km no ritmo de conversa. Corra enquanto der para conversar; caminhe 1 min sempre que precisar e retome.,5,40,5,50,4–6
+12-B-R,12,3 - Contínuo,teste,B,Quarta ou quinta,Corrida/caminhada,2× (8 min correndo + 1 min caminhando),5,18,5,28,3–4
+12-C-R,12,3 - Contínuo,teste,C,Sexta a domingo,Corrida/caminhada,2× (10 min correndo + 1 min caminhando),5,22,5,32,3–5

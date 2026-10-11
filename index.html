@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
-  <title>Corrida a dois</title>
-  <meta name="description" content="Plano de 12 semanas para voltar a correr 5 km, com marcação de treinos compartilhada.">
+  <title>Plano de corrida</title>
+  <meta name="description" content="Plano de 12 semanas para voltar a correr 5 km, com marcação de treinos.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;display=swap" rel="stylesheet">
@@ -17,17 +17,15 @@
       <h1>12 semanas até os 5 km</h1>
       <p id="status-line" class="lede"></p>
     </div>
-    <div id="who" class="who" role="group" aria-label="Quem está registrando"></div>
   </header>
 
   <p id="banner" class="banner" role="status" hidden></p>
 
   <main>
     <section class="track-wrap" aria-labelledby="track-title">
-      <h2 id="track-title" class="sr-only">Progresso da dupla, semana a semana</h2>
+      <h2 id="track-title" class="sr-only">Progresso, semana a semana</h2>
       <div id="track" class="track"></div>
       <p class="legend">
-        <span class="legend__item"><i class="swatch swatch--joint"></i>Segunda, juntos</span>
         <span class="legend__item"><i class="swatch swatch--rest"></i>Descarga: menos volume</span>
         <span class="legend__item"><i class="swatch swatch--test"></i>Teste de 5 km</span>
       </p>
@@ -44,7 +42,7 @@
   <dialog id="key-dialog" class="dialog" aria-labelledby="key-title">
     <form id="key-form" method="dialog">
       <h2 id="key-title">Chave de acesso</h2>
-      <p>Peça a chave para quem configurou a planilha. Ela fica salva só neste aparelho.</p>
+      <p>Use a chave definida em ACCESS_KEY na planilha. Ela fica salva só neste aparelho.</p>
       <label class="field">
         <span>Chave</span>
         <input id="key-input" type="password" autocomplete="off" required>

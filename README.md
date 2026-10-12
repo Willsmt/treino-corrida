@@ -1,4 +1,4 @@
-# Plano de corrida
+# Corrida a dois
 
 Plano de 12 semanas para voltar a correr 5 km, com página de acompanhamento que grava numa planilha do Google. Sem servidor próprio: a página é estática (GitHub Pages) e o Apps Script faz o papel de API.
 
@@ -6,14 +6,14 @@ Plano de 12 semanas para voltar a correr 5 km, com página de acompanhamento que
 
 | Nível       | Fase       | Semanas | Objetivo                                       |
 | ----------- | ---------- | ------- | ---------------------------------------------- |
-| Macrociclo  | 12 semanas | 1–12    | Fechar 5 km na segunda da semana 12     |
+| Macrociclo  | 12 semanas | 1–12    | Fechar 5 km juntos na segunda da semana 12     |
 | Mesociclo 1 | Adaptação  | 1–4     | Criar o hábito, sempre em ritmo de conversa    |
 | Mesociclo 2 | Base       | 5–8     | Mais tempo correndo, menos pausas de caminhada |
 | Mesociclo 3 | Contínuo   | 9–12    | Blocos longos, polimento na 11 e teste na 12   |
 
 - **Semanas de descarga:** 4 e 8 (20–40% menos tempo correndo). A 11 é o polimento antes do teste.
-- **Microciclo (3 sessões):** A = segunda, base; B = leve, meio da semana; C = intermediário, fim de semana.
-- **Trilha de retorno** (já correu 5K): corrida/caminhada com pausas curtas e fartlek leve na sessão C das semanas 9 e 10.
+- **Microciclo (3 sessões):** A = segunda, juntos; B = leve, meio da semana; C = intermediário, fim de semana.
+- **Duas trilhas:** a sessão A é a mesma para os dois (o ritmo de quem está começando manda). B e C seguem a trilha de cada um: _iniciante_ (Suellen) e _retorno_ (Willians). O retorno ganha fartlek leve nas semanas 9 e 10.
 - **Intensidade por esforço (1–10), não por pace.** 3–4 é ritmo de conversa. Na esteira: inclinação 1% e o mesmo critério.
 - **Toda sessão:** 5 min caminhando antes e 5 depois.
 - Os testes garantem as regras: progressão de no máximo 15% entre semanas de carga, descarga de 20–40% e nenhuma sessão acima de 60 min.
@@ -40,7 +40,7 @@ tests/                plano, lógica e fumaça da página (jsdom)
 
 1. Crie uma planilha no Google Sheets. Em **Arquivo > Importar**, envie `data/plano.csv` com _Inserir nova planilha_ e renomeie a aba para `Plano`.
 2. Na planilha, abra **Extensões > Apps Script** e cole o conteúdo de `apps-script/Code.gs`.
-3. Em **Configurações do projeto > Propriedades do script**, crie `ACCESS_KEY` com uma frase longa que só você conhece. Não escreva a chave no código.
+3. Em **Configurações do projeto > Propriedades do script**, crie `ACCESS_KEY` com uma frase longa que só vocês dois conhecem. Não escreva a chave no código.
 4. Rode a função `setup` uma vez para criar a aba `Registro` (autorize o acesso quando pedir).
 5. **Implantar > Nova implantação > App da Web**, executando como _Eu_ e com acesso para _Qualquer pessoa_. Copie a URL que termina em `/exec`.
 6. Cole a URL em `API_URL`, dentro de `js/config.js`, e confira `START_DATE` (a segunda da semana 1).
@@ -54,7 +54,7 @@ git add . && git commit -m "feat(tracker): página de acompanhamento de treino"
 git push
 ```
 
-No GitHub: **Settings > Pages**, branch `main`, pasta raiz. Abra o link e informe a chave uma vez por aparelho.
+No GitHub: **Settings > Pages**, branch `main`, pasta raiz. Cada um abre o link, escolhe o próprio nome e informa a chave uma vez por aparelho.
 
 ## Como funciona a persistência
 
@@ -65,7 +65,7 @@ No GitHub: **Settings > Pages**, branch `main`, pasta raiz. Abra o link e inform
 ## Segurança
 
 - A URL `/exec` é pública por natureza. Quem protege é a `ACCESS_KEY`, validada no servidor; ela fica no localStorage de cada aparelho e fora do Git.
-- Para uso pessoal isso basta; para mais gente, o caminho é login por usuário.
+- A chave não identifica a pessoa: quem a tiver pode gravar como qualquer atleta. Para dois amigos isso basta; para mais gente, o caminho é login por usuário.
 - O servidor valida atleta, formato da sessão, faixas numéricas e limita o tamanho do corpo e da observação. A página monta o DOM com `textContent` (sem `innerHTML`) e tem Content-Security-Policy.
 
 ## Desenvolvimento
@@ -76,7 +76,7 @@ npm test            # plano, lógica e página (jsdom)
 npm run plan:csv    # regenera data/plano.csv após mexer em js/plan.js
 ```
 
-Antes de começar a correr: se você ficou muito tempo parado ou tiver qualquer questão cardíaca ou articular, vale um check-up. Dor que passa de 3 dias: troque a corrida por caminhada, bicicleta ou natação e procure um médico.
+Antes de começar a correr: se algum dos dois ficou muito tempo parado ou tem qualquer questão cardíaca ou articular, vale um check-up. Dor que passa de 3 dias: troque a corrida por caminhada, bicicleta ou natação e procure um médico.
 
 ## Fontes do desenho do plano
 

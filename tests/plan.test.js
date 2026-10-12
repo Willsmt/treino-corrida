@@ -30,6 +30,16 @@ test('ids são únicos por atleta e seguem o padrão', () => {
   }
 });
 
+test('sessão de segunda é a mesma (mesmo id e conteúdo) para os dois', () => {
+  for (let w = 1; w <= 12; w += 1) {
+    const [a1] = PLAN.weekSessions(w, 'willians');
+    const [a2] = PLAN.weekSessions(w, 'suellen');
+    assert.equal(a1.id, a2.id);
+    assert.equal(a1.main, a2.main);
+    assert.equal(a1.joint, true);
+  }
+});
+
 test('progressão: tempo correndo sobe no máximo 15% entre semanas de carga', () => {
   for (const id of IDS) {
     for (let w = 2; w <= 10; w += 1) {
@@ -53,9 +63,16 @@ test('descarga e polimento reduzem 20–40% do volume da última semana de carga
 });
 
 test('semana 12: segunda é o teste de 5 km', () => {
-  const [a] = PLAN.weekSessions(12, 'willians');
+  const [a] = PLAN.weekSessions(12, 'suellen');
   assert.equal(a.type, 'Teste 5K');
   assert.equal(KIND(12), 'teste');
+});
+
+test('trilha de retorno corre mais que a iniciante em B+C em toda semana', () => {
+  for (let w = 1; w <= 12; w += 1) {
+    const sum = (id) => PLAN.weekSessions(w, id).filter((s) => s.slot !== 'A').reduce((t, s) => t + s.runMin, 0);
+    assert.ok(sum('willians') > sum('suellen'), `semana ${w}`);
+  }
 });
 
 test('nenhuma sessão passa de 60 min no total e todas começam com aquecimento', () => {
@@ -78,11 +95,11 @@ test('mesociclos cobrem as 12 semanas sem buracos', () => {
   assert.deepEqual(covered, Array.from({ length: 12 }, (_, i) => i + 1));
 });
 
-test('CSV: cabeçalho + 36 linhas, 13 colunas, ids únicos', () => {
+test('CSV: cabeçalho + 60 linhas, 15 colunas, ids únicos', () => {
   const lines = PLAN.toCsv().trimEnd().split('\n');
-  assert.equal(lines.length, 37);
+  assert.equal(lines.length, 61);
   const cols = lines[0].split(',').length;
-  assert.equal(cols, 13);
+  assert.equal(cols, 15);
   const ids = lines.slice(1).map((l) => l.split(',')[0]);
-  assert.equal(new Set(ids).size, 36);
+  assert.equal(new Set(ids).size, 60);
 });

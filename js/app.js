@@ -6,6 +6,7 @@
   const CFG = window.TREINO_CONFIG;
 
   const LS = {
+    athlete: 'treino.athlete',
     key: 'treino.key',
     records: 'treino.records.v1',
     queue: 'treino.queue.v1',
@@ -33,7 +34,7 @@
   const isAthlete = (id) => PLAN.ATHLETES.some((a) => a.id === id);
 
   const state = {
-    athleteId: PLAN.ATHLETES[0].id,
+    athleteId: isAthlete(store.get(LS.athlete, '')) ? store.get(LS.athlete, '') : PLAN.ATHLETES[0].id,
     position: LOGIC.planPosition(CFG.START_DATE, new Date(), PLAN.WEEK_COUNT),
     week: 1,
     key: String(store.get(LS.key, '')),
@@ -46,6 +47,7 @@
   const $ = (id) => document.getElementById(id);
   const els = {
     status: $('status-line'),
+    who: $('who'),
     banner: $('banner'),
     track: $('track'),
     week: $('week'),
@@ -179,6 +181,15 @@
     els.status.textContent = text;
   }
 
+  function renderWho() {
+    document.body.dataset.me = state.athleteId;
+    els.who.replaceChildren(
+      ...PLAN.ATHLETES.map((a) =>
+        h('button', { type: 'button', 'aria-pressed': String(a.id === state.athleteId), onclick: () => selectAthlete(a.id) }, a.name)
+      )
+    );
+  }
+
   function renderTrack() {
     const current = state.position.state === 'running' ? state.position.week : null;
     const kids = [h('span')];
@@ -190,7 +201,8 @@
       kids.push(h('div', { class: 'track__num', 'aria-current': w === current ? 'date' : null }, h('span', { text: String(w) })));
     }
 
-    PLAN.ATHLETES.forEach((a) => {
+    PLAN.ATHLETES.forEach((a, i) => {
+      if (i > 0) kids.push(h('div', { class: 'track__divider', 'aria-hidden': 'true' }));
       kids.push(h('div', { class: 'track__lane-label', 'data-athlete': a.id, text: a.name }));
       const sessions = PLAN.sessionsFor(a.id);
       for (const wk of LOGIC.summarize(state.records, sessions, a.id).byWeek) {
@@ -210,7 +222,7 @@
             },
             inWeek.map((s) => {
               const rec = state.records.get(LOGIC.recordKey(a.id, s.id));
-              return h('span', { class: `bar${rec && rec.done ? ' is-done' : ''}` });
+              return h('span', { class: `bar${s.joint ? ' bar--joint' : ''}${rec && rec.done ? ' is-done' : ''}` });
             })
           )
         );
@@ -233,6 +245,8 @@
   function sessionView(s, weekStart) {
     const athleteId = state.athleteId;
     const rec = state.records.get(LOGIC.recordKey(athleteId, s.id));
+    const partner = PLAN.ATHLETES.find((a) => a.id !== athleteId);
+    const partnerRec = s.joint ? state.records.get(LOGIC.recordKey(partner.id, s.id)) : null;
 
     const done = h('input', { type: 'checkbox', id: `done-${s.id}` });
     done.checked = Boolean(rec && rec.done);
@@ -274,11 +288,11 @@
     );
 
     const title = s.type === 'Teste 5K' ? 'Teste de 5 km' : `Treino ${s.title.toLowerCase()}`;
-    const when = s.slot === 'A' ? dayLong.format(weekStart) : s.when;
+    const when = s.joint ? `${dayLong.format(weekStart)}, juntos` : s.when;
 
     return h(
       'article',
-      { class: `session${rec && rec.done ? ' is-done' : ''}` },
+      { class: `session${rec && rec.done ? ' is-done' : ''}`, 'data-joint': String(s.joint) },
       h(
         'div',
         { class: 'session__body' },
@@ -292,7 +306,8 @@
           h('li', { text: `${s.warmMin} min caminhando antes e ${s.coolMin} depois` }),
           h('li', { text: `Esforço ${s.rpe} de 10` })
         ),
-        h('p', { class: 'session__tip', text: s.tip })
+        h('p', { class: 'session__tip', text: s.tip }),
+        partnerRec && partnerRec.done ? h('p', { class: 'session__partner', text: `${partner.name} já marcou este treino como feito.` }) : null
       ),
       form
     );
@@ -317,8 +332,15 @@
 
   function renderAll() {
     renderStatus();
+    renderWho();
     renderTrack();
     renderWeek();
+  }
+
+  function selectAthlete(id) {
+    state.athleteId = id;
+    store.set(LS.athlete, id);
+    renderAll();
   }
 
   function selectWeek(week) {
@@ -348,5 +370,5 @@
 
   renderAll();
   if (Api.isRemote()) refresh();
-  else setBanner('Modo local: os registros ficam só neste navegador. Configure a planilha (veja o README) para guardar os registros fora do navegador.');
+  else setBanner('Modo local: os registros ficam só neste navegador. Configure a planilha (veja o README) para compartilhar com a Suellen.');
 })();

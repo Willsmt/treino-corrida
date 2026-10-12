@@ -11,18 +11,19 @@
 
   const ATHLETES = Object.freeze([
     { id: 'willians', name: 'Willians', track: 'R', label: 'Retorno: já correu 5K' },
+    { id: 'suellen', name: 'Suellen', track: 'I', label: 'Iniciante: corre até ~1 km' },
   ]);
 
   const SLOTS = Object.freeze({
-    A: { title: 'Base', when: 'Segunda-feira', rpe: '3–5' },
-    B: { title: 'Leve', when: 'Quarta ou quinta', rpe: '3–4' },
-    C: { title: 'Intermediário', when: 'Sexta a domingo', rpe: '3–5' },
+    A: { title: 'Juntos', when: 'Segunda-feira', joint: true, rpe: '3–5' },
+    B: { title: 'Leve', when: 'Quarta ou quinta', joint: false, rpe: '3–4' },
+    C: { title: 'Intermediário', when: 'Sexta a domingo', joint: false, rpe: '3–5' },
   });
 
   const MESOS = Object.freeze([
     { id: 1, name: 'Adaptação', weeks: [1, 4], goal: 'Criar o hábito: 3 sessões por semana, sempre em ritmo de conversa.' },
     { id: 2, name: 'Base', weeks: [5, 8], goal: 'Aumentar o tempo correndo e reduzir as pausas de caminhada.' },
-    { id: 3, name: 'Contínuo', weeks: [9, 12], goal: 'Consolidar blocos longos e fechar com o teste de 5 km.' },
+    { id: 3, name: 'Contínuo', weeks: [9, 12], goal: 'Consolidar blocos longos e fechar com o teste de 5 km juntos.' },
   ]);
 
   const WEEK_KIND = { 4: 'descarga', 8: 'descarga', 11: 'polimento', 12: 'teste' };
@@ -30,44 +31,61 @@
     carga: 'Semana de progressão.',
     descarga: 'Descarga: menos volume para o corpo assimilar o treino. Não compense depois.',
     polimento: 'Polimento: volume menor para chegar descansado ao teste.',
-    teste: 'Semana do teste: 5 km na segunda; depois, duas corridas leves de recuperação.',
+    teste: 'Semana do teste: 5 km juntos na segunda; depois, duas corridas leves de recuperação.',
   };
 
   /* [corrida min, caminhada min, repetições]. Caminhada 0 = corrida contínua. */
   const BLOCKS = {
-    1: { A: [4, 1, 5], B: [4, 1, 5], C: [5, 1, 4] },
-    2: { A: [5, 1, 4], B: [5, 1, 4], C: [6, 1, 4] },
-    3: { A: [6, 1, 4], B: [6, 1, 4], C: [8, 1, 3] },
-    4: { A: [4, 1, 3], B: [5, 1, 4], C: [6, 1, 3] },
-    5: { A: [6, 1, 4], B: [6, 1, 4], C: [8, 1, 3] },
-    6: { A: [8, 1, 3], B: [8, 1, 3], C: [10, 1, 3] },
-    7: { A: [8, 1, 3], B: [10, 1, 2], C: [12, 1, 3] },
-    8: { A: [6, 1, 3], B: [8, 1, 2], C: [10, 1, 2] },
-    9: { A: [10, 1, 2], B: [15, 1, 2] },
-    10: { A: [10, 1, 2], B: [25, 0, 1] },
-    11: { A: [8, 1, 2], B: [20, 0, 1], C: [10, 1, 2] },
-    12: { B: [8, 1, 2], C: [10, 1, 2] },
+    I: {
+      1: { A: [3, 2, 5], B: [3, 2, 4], C: [3, 2, 4] },
+      2: { A: [4, 2, 4], B: [3, 2, 4], C: [4, 2, 4] },
+      3: { A: [5, 2, 4], B: [3, 2, 4], C: [5, 2, 3] },
+      4: { A: [4, 2, 3], B: [3, 2, 3], C: [4, 2, 3] },
+      5: { A: [6, 2, 4], B: [4, 2, 3], C: [5, 2, 3] },
+      6: { A: [8, 2, 3], B: [5, 2, 3], C: [6, 2, 3] },
+      7: { A: [10, 2, 3], B: [5, 2, 3], C: [6, 2, 3] },
+      8: { A: [8, 2, 3], B: [5, 2, 2], C: [6, 2, 2] },
+      9: { A: [10, 2, 3], B: [6, 2, 3], C: [7, 2, 3] },
+      10: { A: [12, 2, 3], B: [8, 2, 2], C: [10, 2, 2] },
+      11: { A: [10, 2, 2], B: [8, 2, 2], C: [6, 2, 2] },
+      12: { B: [5, 2, 3], C: [5, 2, 2] },
+    },
+    R: {
+      1: { B: [4, 1, 5], C: [5, 1, 4] },
+      2: { B: [5, 1, 4], C: [6, 1, 4] },
+      3: { B: [6, 1, 4], C: [8, 1, 3] },
+      4: { B: [5, 1, 4], C: [6, 1, 3] },
+      5: { B: [6, 1, 4], C: [8, 1, 3] },
+      6: { B: [8, 1, 3], C: [10, 1, 3] },
+      7: { B: [10, 1, 2], C: [12, 1, 3] },
+      8: { B: [8, 1, 2], C: [10, 1, 2] },
+      9: { B: [15, 1, 2] },
+      10: { B: [25, 0, 1] },
+      11: { B: [20, 0, 1], C: [10, 1, 2] },
+      12: { B: [8, 1, 2], C: [10, 1, 2] },
+    },
   };
 
-  /* Fartlek leve na sessão C, semanas 9 e 10. */
+  /* Fartlek leve só na trilha de retorno (C), semanas 9 e 10. */
   const FARTLEK = {
     9: { lead: 8, reps: 6, hard: 1, easy: 2 },
     10: { lead: 8, reps: 8, hard: 1, easy: 2 },
   };
 
   const TEST = {
-    main: '5 km no ritmo de conversa. Corra enquanto der para conversar; caminhe 1 min sempre que precisar e retome.',
+    main: '5 km juntos no ritmo da Suellen. Corram enquanto der para conversar; caminhem 1 min sempre que precisar e retomem.',
     mainMin: 40,
     runMin: 30,
   };
 
   const TIPS = {
-    A: 'Pode ser na esteira: inclinação 1% e ritmo pelo esforço (dá para conversar), não pelo número.',
+    A: 'O ritmo de quem está começando manda: se precisar de pausa, vocês pausam juntos.',
     B: 'Pode ser na esteira: inclinação 1% e ritmo pelo esforço (dá para conversar), não pelo número.',
     C: 'Pode ser na esteira: inclinação 1% e ritmo pelo esforço (dá para conversar), não pelo número.',
   };
 
-  const SESSION_ID_RE = /^(0[1-9]|1[0-2])-[ABC]-[JR]$/;
+  const TRACK_LABEL = { J: 'Juntos', I: 'Iniciante', R: 'Retorno' };
+  const SESSION_ID_RE = /^(0[1-9]|1[0-2])-[ABC]-[JIR]$/;
 
   const pad = (n) => String(n).padStart(2, '0');
   const mesoOf = (week) => MESOS.find((m) => week >= m.weeks[0] && week <= m.weeks[1]);
@@ -92,25 +110,26 @@
     };
   }
 
-  function core(week, slot) {
+  function core(week, slot, track) {
     if (slot === 'A' && week === WEEK_COUNT) return { type: 'Teste 5K', ...TEST };
-    if (slot === 'C' && FARTLEK[week]) return fromFartlek(FARTLEK[week]);
-    return fromBlock(BLOCKS[week][slot]);
+    if (slot === 'A') return fromBlock(BLOCKS.I[week].A);
+    if (slot === 'C' && track === 'R' && FARTLEK[week]) return fromFartlek(FARTLEK[week]);
+    return fromBlock(BLOCKS[track][week][slot]);
   }
 
   function build(week, slot, track) {
     const meso = mesoOf(week);
-    const c = core(week, slot);
+    const c = core(week, slot, track);
     const isTest = c.type === 'Teste 5K';
     return Object.freeze({
-      /* A mantém o sufixo J: o Code.gs já implantado só aceita ids -J e -R. */
-      id: `${pad(week)}-${slot}-${slot === 'A' ? 'J' : track}`,
+      id: `${pad(week)}-${slot}-${track}`,
       week,
       slot,
       track,
       meso: meso.id,
       mesoName: meso.name,
       kind: WEEK_KIND[week] || 'carga',
+      joint: SLOTS[slot].joint,
       title: SLOTS[slot].title,
       when: SLOTS[slot].when,
       ...c,
@@ -130,7 +149,7 @@
 
   function weekSessions(week, athleteId) {
     const track = trackFor(athleteId);
-    return ['A', 'B', 'C'].map((slot) => build(week, slot, track));
+    return ['A', 'B', 'C'].map((slot) => build(week, slot, slot === 'A' ? 'J' : track));
   }
 
   function sessionsFor(athleteId) {
@@ -145,7 +164,8 @@
   function distinctSessions() {
     const out = [];
     for (let w = 1; w <= WEEK_COUNT; w += 1) {
-      for (const slot of ['A', 'B', 'C']) out.push(build(w, slot, 'R'));
+      out.push(build(w, 'A', 'J'));
+      for (const track of ['I', 'R']) out.push(build(w, 'B', track), build(w, 'C', track));
     }
     return out;
   }
@@ -165,6 +185,8 @@
     ['tipo_semana', (s) => s.kind],
     ['slot', (s) => s.slot],
     ['dia_sugerido', (s) => s.when],
+    ['trilha', (s) => TRACK_LABEL[s.track]],
+    ['juntos', (s) => (s.joint ? 'sim' : 'nao')],
     ['tipo', (s) => s.type],
     ['treino_principal', (s) => s.main],
     ['aquecimento_min', (s) => s.warmMin],
@@ -192,6 +214,7 @@
     MESOS,
     WEEKS,
     SESSION_ID_RE,
+    TRACK_LABEL,
     sessionsFor,
     weekSessions,
     weeklyRunMinutes,
